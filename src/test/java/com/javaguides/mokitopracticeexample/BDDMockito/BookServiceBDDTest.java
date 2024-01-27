@@ -15,4 +15,16 @@ public class BookServiceBDDTest {
         // Then: Verify the outcome
         System.out.println("Retrieved title: " + title);
     }
+
+    @Test
+    public void testFetchBookTitle() {
+        // Given: Setting up the scenario
+        BookService mockBookService = BDDMockito.mock(BookService.class);
+        String dummyBookId = "123";
+        BDDMockito.willReturn("Mocked Book Title").given(mockBookService).fetchBookTitleById(dummyBookId);
+        // When: Performing the action
+        String returnedTitle = mockBookService.fetchBookTitleById(dummyBookId);
+        // Then: Verifying the outcome
+        System.out.println("Returned Book Title: " + returnedTitle);
+    }
 }
